@@ -1,0 +1,12 @@
+
+.container {
+  width: 700px;
+  margin: auto;
+  text-align: center;
+}
+
+.block {
+  display: inline-block;
+  margin: 0 0;
+  vertical-align: top;
+}
