@@ -1,12 +1,59 @@
+body {
+
+}
+header {
+  background-color: #323232;
+  height: 44px;
+  color: white;
+  overflow: hidden;
+}
+
+header h5, header p{
+  display: inline-block;
+}
+
+header h5 {
+  font-size: 2.1em
+}
+
+header p {
+  margin-right: 30px;
+}
+
+form {
+  margin-bottom: 10px;
+}
 
 .container {
-  width: 700px;
+  width: 1000px;
   margin: auto;
   text-align: center;
 }
-
+.welcome-logout {
+  float: right;
+}
 .block {
   display: inline-block;
-  margin: 0 0;
+  width: 378px;
+  margin-right: 50px;
+  margin-left: 50px;
   vertical-align: top;
+
+}
+
+.container .message-block {
+  text-align: left;
+  margin-top: 30px;
+}
+
+.success-msg {
+  text-align: center;
+}
+
+.comment-section {
+  margin-left: 30px;
+}
+
+.name {
+  font-weight: bold;
 }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CodingDojo Wall</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css')}}">
+    <!-- Materialize-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h5>CodingDojo Wall</h5>
+      <div class="welcome-logout">
+        <p>Welcome, {{session['first_name']}}!</p>
+        <a href='/logout'>Logout</a>
+      </div>
+    </header>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <p>{{message}}</p>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <main class="container">
+      <h2>Post a message</h2>
+      <form action="/post_message" method="post" id="message-textarea">
+        <textarea name="message" type="text"></textarea>
+        <button type="submit">Post a message</button>
+      </form>
+
+      {% for i in range(session['message_data']|length)%}
+      <div class='message-block'>
+        <span class="name">{{session['message_data'][i]["concat_ws(' ', users.first_name, users.last_name)"]}} -</span>
+        {{session['message_data'][i]['updated_at']}}<br>
+        {{session['message_data'][i]['message']}}
+        <form action="/post_comment" method="post" class="comment-textarea">
+          <div class="comment-section">
+            {%for j in range(comment_data|length)%}
+              {%if comment_data[j]['messages_id'] == session['message_data'][i]['messages.id']%}
+                {{comment_data[j]['concat_ws(' ', users.first_name, users.last_name)']}}
+                {{comment_data[j]['updated_at']}}<br>
+                {{comment_data[j]['comment']}}<br>
+              {%endif%}
+            {%endfor%}
+            <p>Post a comment</p>
+            <input name="message_id" type="hidden" value="{{session['message_data'][i]['messages.id']}}">
+            <input name="user_id" type="hidden" value="{{session['message_data'][i]['id']}}">
+            <textarea name="comment" type="text"></textarea>
+            <button type="submit">Post a comment</button>
+          </div>
+        </form>
+      </div>
+      {%endfor%}
+    </main>
+  </body>
+</html>

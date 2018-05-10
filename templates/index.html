@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Login and Registration</title>
+    <title>CodingDojo Wall</title>
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css')}}">
     <!-- Materialize-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
@@ -10,6 +10,9 @@
 
   </head>
   <body>
+    <header>
+      <h5>CodingDojo Wall</h5>
+    </header>
 
     <div class="container">
       {% with messages = get_flashed_messages() %}
@@ -20,44 +23,9 @@
       {% endif %}
       {% endwith %}
 
-      <h1>Login and Registration</h1>
-        <div class="row block">
-          <h2>Register here!</h2>
-          <form action="/process_register" method="post" class="col s12">
-            <div class="row">
-              <div class="input-field col s6">
-                <input name="first_name" id="first_name" type="text" class="validate">
-                <label for="first_name">First Name</label>
-              </div>
-              <div class="input-field col s6">
-                <input name="last_name" id="last_name" type="text" class="validate">
-                <label for="last_name">Last Name</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input name="email" id="email" type="email" class="validate">
-                <label for="email">Email</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input name="password" id="password" type="password" >
-                <label for="password">Password</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input name="confirm_pw" id="password" type="password" >
-                <label for="password">Confirm password</label>
-              </div>
-            </div>
-            <button type="submit">Register!</button>
-          </form>
-        </div>
 
       <div class="row block">
-        <h2>Login here!</h2>
+        <h2>Login</h2>
         <form action="/process_login" method="post" class="col s12">
           <div class="row">
             <div class="input-field col s12">
@@ -73,7 +41,10 @@
           </div>
           <button type="submit">Login!</button>
         </form>
+
+        <p>New? <a href='/register'>Register here!</a></p>
       </div>
+
     </div>
 
 
