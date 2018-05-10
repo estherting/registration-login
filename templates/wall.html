@@ -39,7 +39,7 @@
           <div class="comment-section">
             {%for j in range(comment_data|length)%}
               {%if comment_data[j]['messages_id'] == session['message_data'][i]['messages.id']%}
-                {{comment_data[j]['concat_ws(' ', users.first_name, users.last_name)']}}
+                <span class="name">{{comment_data[j]["concat_ws(' ', users.first_name, users.last_name)"]}}</span>
                 {{comment_data[j]['updated_at']}}<br>
                 {{comment_data[j]['comment']}}<br>
               {%endif%}

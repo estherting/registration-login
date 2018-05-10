@@ -27,8 +27,6 @@ def process_register():
     session['temp_first_name'] = request.form['first_name']
     session['temp_last_name'] = request.form['last_name']
     session['temp_email'] = request.form['email']
-    session['temp_password'] = request.form['password']
-    session['temp_confirm_pw'] = request.form['confirm_pw']
 
     first_name = request.form['first_name']
     last_name = request.form['last_name']
@@ -125,7 +123,7 @@ def wall():
 
     query = "select comments.messages_id, concat_ws(' ', users.first_name, users.last_name), comments.updated_at, comments.comment from comments join users on comments.users_id = users.id join messages on comments.users_id = messages.id"
     comment_data = mysql.query_db(query)
-    flash(comment_data)
+    # flash(comment_data)
     return render_template('wall.html', comment_data=comment_data)
 
 
